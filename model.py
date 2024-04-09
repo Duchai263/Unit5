@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, Date, ARRAY, Text
+from sqlalchemy import Column, Integer, String, Date, ARRAY, Text, Identity
 from datetime import datetime
 
 app = Flask(__name__,static_folder="static")
@@ -8,7 +8,7 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///projects.db"
 db = SQLAlchemy(app)
 
 class Project(db.Model):
-    id = Column(Integer, primary_key=True)
+    id = Column(Integer,Identity(start=1,cycle=True), primary_key=True)
     title = Column(String)
     date = Column(Date,default=datetime.now().date())
     description = Column(Text)
