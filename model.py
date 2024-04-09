@@ -12,10 +12,12 @@ class Project(db.Model):
     title = Column(String)
     date = Column(Date,default=datetime.now().date())
     description = Column(Text)
-    skill = Column(String)
+    skills = Column(String)
+    github = Column(String)
 
     def __repr__(self):
         return f"""Project: (Title: {self.title}
                             Date: {self.date}
                             Description: {self.description}
-                            Skill: {self.skill})"""
+                            Skills: {self.skills}
+                            Github: {self.github})"""
